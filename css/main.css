@@ -1,0 +1,21 @@
+.navbar{
+    background-color: #2678a8;
+}
+.landing-page-full{
+    height:100%;
+    background: #2678a8;
+}
+.landing-page-image{
+    margin-top:140px;
+}
+.nav_text a{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+body{margin:0;height:100%;}
+canvas{
+    position:absolute;top:0;left:0;
+    background-color:none;
+    z-index:99999;
+}

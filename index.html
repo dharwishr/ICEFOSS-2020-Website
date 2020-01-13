@@ -1,0 +1,198 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ICEFOSS 2020 | National Conference on Free and Open Source Software | Federal Institute of Science and
+        Technology (FISAT) Mookkannoor
+    </title>
+    <link rel="stylesheet" href="css/bulma.min.css">
+    <link rel="stylesheet" href="css/bulma-timeline.min.css">
+    <link rel="stylesheet" href="css/bulma-divider.min.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/smooth_scroll.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/expand-card.js"></script>
+    <script src="js/main.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <nav class="nav-1 navbar  landing-page  is-fixed-top" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item  has-text-white" href="#home"><img src="images/logo.png"></a>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+        <div id="navbar" class="navbar-menu">
+            <div class="navbar-end">
+                <div class="navbar-start brackets nav_text">
+                    <a class="navbar-item has-text-white has-text-centered" href="#about">
+                        <p>ABOUT</p>
+                    </a>
+                    <a class="navbar-item has-text-white has-text-centered" href="#person">
+                        <p>Speakers</p>
+                    </a>
+                    <a class="navbar-item has-text-white has-text-centered" href="#workshop">
+                        <p>Workshops</p>
+                    </a>
+                    <a class="navbar-item has-text-white has-text-centered" href="#register">
+                        <p>Register</p>
+                    </a>
+                    <a class="navbar-item has-text-white has-text-centered" href="#faq">
+                        <p>F.A.Q</p>
+                    </a>
+                    <a class="navbar-item has-text-white has-text-centered" href="#workshop_schedule">Workshop
+                        Schedule</a>
+                    <a class="navbar-item has-text-white has-text-centered" href="#venue">
+                        <p>Venue</p>
+                    </a>
+                    <a class="navbar-item has-text-white has-text-centered" href="#contact">
+                        <p>Contact Us</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <section id="home" class="hero landing-page landing-page-full has-text-centered is-family-monospace">
+        <div class="container hero-body">
+            <img src="images/banner_text.png" class="landing-page-image">
+            <p class="is-size-4 has-text-white" style="padding-top:3rem">
+                ICEFOSS is a Free Software Conference organized by FISAT Free Software Cell (FFSC) aiming all FOSS
+                enthusiasts and others. ICEFOSS'19, scheduled on the 19<sup>th</sup> and 20<sup>th</sup> of February
+                2019 is the seventh edition of this conference.
+            </p>
+            <p style="padding-top:5rem;">
+                <a class="button is-large is-rounded button-register" style="margin-right:1rem;"
+                    href="#register">Register now</a>
+            </p>
+        </div>
+    </section>
+    <canvas id="canvas"></canvas>
+    <script>
+        (function () {
+            var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+            window.requestAnimationFrame = requestAnimationFrame;
+        })();
+
+
+        var flakes = [],
+            canvas = document.getElementById("canvas"),
+            ctx = canvas.getContext("2d"),
+            flakeCount = 400,
+            mX = -100,
+            mY = -100
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        function snow() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            for (var i = 0; i < flakeCount; i++) {
+                var flake = flakes[i],
+                    x = mX,
+                    y = mY,
+                    minDist = 150,
+                    x2 = flake.x,
+                    y2 = flake.y;
+
+                var dist = Math.sqrt((x2 - x) * (x2 - x) + (y2 - y) * (y2 - y)),
+                    dx = x2 - x,
+                    dy = y2 - y;
+
+                if (dist < minDist) {
+                    var force = minDist / (dist * dist),
+                        xcomp = (x - x2) / dist,
+                        ycomp = (y - y2) / dist,
+                        deltaV = force / 2;
+
+                    flake.velX -= deltaV * xcomp;
+                    flake.velY -= deltaV * ycomp;
+
+                } else {
+                    flake.velX *= .98;
+                    if (flake.velY <= flake.speed) {
+                        flake.velY = flake.speed
+                    }
+                    flake.velX += Math.cos(flake.step += .05) * flake.stepSize;
+                }
+
+                ctx.fillStyle = "rgba(255,255,255," + flake.opacity + ")";
+                flake.y += flake.velY;
+                flake.x += flake.velX;
+
+                if (flake.y >= canvas.height || flake.y <= 0) {
+                    reset(flake);
+                }
+
+
+                if (flake.x >= canvas.width || flake.x <= 0) {
+                    reset(flake);
+                }
+
+                ctx.beginPath();
+                ctx.arc(flake.x, flake.y, flake.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            requestAnimationFrame(snow);
+        };
+
+        function reset(flake) {
+            flake.x = Math.floor(Math.random() * canvas.width);
+            flake.y = 0;
+            flake.size = (Math.random() * 3) + 2;
+            flake.speed = (Math.random() * 1) + 0.5;
+            flake.velY = flake.speed;
+            flake.velX = 0;
+            flake.opacity = (Math.random() * 0.5) + 0.3;
+        }
+
+        function init() {
+            for (var i = 0; i < flakeCount; i++) {
+                var x = Math.floor(Math.random() * canvas.width),
+                    y = Math.floor(Math.random() * canvas.height),
+                    size = (Math.random() * 3) + 2,
+                    speed = (Math.random() * 1) + 0.5,
+                    opacity = (Math.random() * 0.5) + 0.3;
+
+                flakes.push({
+                    speed: speed,
+                    velY: speed,
+                    velX: 0,
+                    x: x,
+                    y: y,
+                    size: size,
+                    stepSize: (Math.random()) / 30,
+                    step: 0,
+                    opacity: opacity
+                });
+            }
+
+            snow();
+        };
+
+        canvas.addEventListener("mousemove", function (e) {
+            mX = e.clientX,
+                mY = e.clientY
+        });
+
+        window.addEventListener("resize", function () {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        })
+
+        init();
+    </script>
+</body>

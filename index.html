@@ -10,13 +10,8 @@
     <link rel="stylesheet" href="css/bulma-timeline.min.css">
     <link rel="stylesheet" href="css/bulma-divider.min.css">
     <link rel="stylesheet" href="css/main.css">
-
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/smooth_scroll.js"></script>
-    <script src="js/modal.js"></script>
-    <script src="js/expand-card.js"></script>
-    <script src="js/main.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css"
+        type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
 
 </head>
@@ -65,18 +60,59 @@
     <section id="home" class="hero landing-page landing-page-full has-text-centered is-family-monospace">
         <div class="container hero-body">
             <img src="images/banner_text.png" class="landing-page-image">
-            <p class="is-size-4 has-text-white" style="padding-top:3rem">
+            <img src="images/date_banner.png" style="width:45%;margin-top:30px;">
+            <p class="is-size-4 has-text-white landing-page-text" style="padding-top:3rem">
                 ICEFOSS is a Free Software Conference organized by FISAT Free Software Cell (FFSC) aiming all FOSS
-                enthusiasts and others. ICEFOSS'19, scheduled on the 19<sup>th</sup> and 20<sup>th</sup> of February
-                2019 is the seventh edition of this conference.
+                enthusiasts and others. ICEFOSS-2020, scheduled on the 2<sup>nd</sup> and 3<sup>th</sup> of February
+                2020 is the seventh edition of this conference.
             </p>
             <p style="padding-top:5rem;">
-                <a class="button is-large is-rounded button-register" style="margin-right:1rem;"
-                    href="#register">Register now</a>
+                <div class="bounce">
+                    <a class="fa fa-arrow-down fa-2x" href="#"></a>
+                </div>
             </p>
         </div>
     </section>
     <canvas id="canvas"></canvas>
+    <section id="about">
+        <div class="container">
+            <div class="columns" style="padding-bottom:3rem;padding-top:3rem;">
+                <div class="column">
+                    <p class="has-text-centered is-size-3" style="padding-top:3rem;color: #606ae7;">About ICEFOSS</p>
+                    <p class="is-size-4 has-text-centered" style="padding-top:3rem;padding-bottom: 3rem;"> ICEFOSS is a
+                        Free Software Conference organized by FISAT Free
+                        Software Cell (FFSC). ICEFOSS 2020, scheduled on February 2,3 2020
+                        includes Workshops covering different aspects of Free Software. ICEFOSS
+                        2019 is the seventh edition of this conference.
+                        To know about the past conferences <a href="http://icefoss.fisat.ac.in/2017/index.html">click
+                            here.</a> </p>
+                </div>
+                <div class="column">
+                    <p class="bd-notification is-primary has-text-centered is-size-3"
+                        style="padding-top:3rem;color: #606ae7;">About FISAT</p>
+                    <p class="is-size-4 has-text-centered" style="padding-top:3rem;padding-bottom: 3rem;"><a
+                            href="http://www.fisat.ac.in/">Federal Institute of Science And Technology (FISAT)</a>
+                        was established in 2002 under the aegis of Federal Bank Officers'
+                        Association Educational Society (FBOAES). The college has carved a niche for
+                        itself in education world, eloquently demonstrated by the flying colors
+                        attained by its students in academics, placements as well as in extra
+                        curricular and co-curricular activities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
     <script>
         (function () {
             var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame ||
@@ -90,7 +126,7 @@
         var flakes = [],
             canvas = document.getElementById("canvas"),
             ctx = canvas.getContext("2d"),
-            flakeCount = 400,
+            flakeCount = 200,
             mX = -100,
             mY = -100
 
@@ -195,4 +231,9 @@
 
         init();
     </script>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/smooth_scroll.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/expand-card.js"></script>
 </body>

@@ -159,18 +159,15 @@ canvas{
   width:45%;
   margin-top:30px;
 }
-@media screen and (min-width: 601px) {
-  .land-text {
-    font-size: 30px;
-  }
-}
-
 @media screen and (max-width: 600px) {
   .land-text {
-    font-size: 10px;
+    font-size: 15px;
+  }
+  .landing-page-image{
+    height:auto;
   }
 }
-@media screen and (max-width: 1400px) {
+@media screen and (min-width: 1200px) {
   .landing-page-image{
     height:28%;
   }
@@ -179,5 +176,16 @@ canvas{
   }
   .landing-date {
     width:35%;
+  }
+}
+@media screen and (min-width: 1500px) {
+  .landing-page-image{
+    height:35%;
+  }
+  .land-text {
+    font-size: 30px;
+  }
+  .landing-date {
+    width:40%;
   }
 }

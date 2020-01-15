@@ -45,12 +45,6 @@ canvas{
     position:absolute;top:0;left:0;
     background-color:none;
 }
-.nav-1{
-}
-
-
-
-
 /*The navbar animation*/
 .brackets a:before, .brackets a:after {
   position: absolute;

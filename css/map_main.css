@@ -7,6 +7,7 @@
 }
 .landing-page-image{
     margin-top:110px;
+    height:30%;
 }
 
 .landing-page-text{
@@ -61,12 +62,14 @@ canvas{
   content: '(';
   left: 0px;
   transform: translateX(10px);
+  color:#4d4d4d;
 }
 
 .brackets a:after {
   content: ')';
   right: 0px;
   transform: translateX(-10px);
+  color:#4d4d4d;
 }
 
 .brackets a:hover:before, .brackets a:hover:after {
@@ -157,7 +160,7 @@ canvas{
   margin-top:30px;
 }
 .landing-page-image1{
-  margin-top:110px;
+  margin-top:80px;
   height:33%;
 }
 @media screen and (max-width: 900px) {
@@ -191,7 +194,7 @@ canvas{
 }
 @media screen and (min-width: 1500px) {
   .landing-page-image{
-    height:35%;
+    height:30%;
   }
   .landing-page-image1{
     height:33%;
@@ -202,4 +205,10 @@ canvas{
   .landing-date {
     width:40%;
   }
+}
+.container1 h2{
+    font-family: Montserrat;
+    font-weight: 400;
+    max-width:800px;
+    font-size:27px;
 }
